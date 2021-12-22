@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Precios de vivienda</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sandstone/bootstrap.min.css" integrity="sha384-zEpdAL7W11eTKeoBJK1g79kgl9qjP7g84KfK3AZsuonx38n8ad+f5ZgXtoSDxPOh" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+
+</head>
+<body>
+    <main class = "container p-4"> <!--construye una estructura de 4 columnas-->
+    <div class="d-grid gap-4">
+    <h1 class="display-4 text-center mt-4 titulo">Calculador de precio de viviendas</h1>
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="col-md-4 offset-md-4 my-auto"> <!--ocupará 4 columnas del espacio, centrado-->
+            <div class="card"> <!--creacion del objeto card-->
+                <div class="card-header">
+                    <form action="." method="post">
+
+                        <div class="form-group">
+                            <input type="text" name = "house_type" class="form-control" placeholder="Piso o Chalet">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" name = "square_meters" class="form-control" placeholder="Metros cuadrados">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" name="n_rooms" class="form-control" placeholder="Número de habitaciones">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" name="n_bathrooms" class="form-control" placeholder="Número de baños">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" name="renewal" class="form-control" placeholder="Necesita reforma">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="number" name="parking" class="form-control" placeholder="Parking">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-dark btn-block">Precio
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <div class="card-body">
+
+                    <ul>
+                        {% for price in price_list: %}
+                            <li>
+                                {{price[0]}}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </main>
+</body>
+</html>
